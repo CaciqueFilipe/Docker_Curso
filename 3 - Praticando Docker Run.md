@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-#Docker Run
+# Docker Run
 -------------------------------------------------------------------
 
 Agora que já conhecemos mais sobre containers, imagens e a diferença entre eles, já podemos fazer um container mais interessante, um pouco mais complexo. Então, vamos criar um container que segurará um site estático, para entendermos também como funciona a parte de redes do Docker. Para tal, vamos baixar a imagem dockersamples/static-site:
@@ -15,13 +15,15 @@ Para tal, paramos o container que acabamos de criar e para impedir o travamento,
 	
 Assim, o container fica executando em segundo plano. Podemos verificar que o container realmente está rodando executando o comando docker ps:
 
-alura@alura-estudio-03:~$ sudo docker ps
+	alura@alura-estudio-03:~$ sudo docker ps
+```
 CONTAINER ID   IMAGE                      COMMAND                  CREATED              STATUS             PORTS            NAMES
 a6f2fab332db   dockersamples/static-site  "/bin/sh -c 'cd /u..."   About a minute ago   Up About a minute  80/tcp, 443/tcp  brave_wozniak
+```
 
 Mas como fazemos para acessar o site estático?
 
-##Acessando o site
+## Acessando o site
 
 Em nenhum momento dizemos onde está o site estático. Qual porta que utilizamos para acessá-lo? A 80, conforme está na saída do docker ps? Essa é a porta interna que o container está utilizando. Então, o que precisamos fazer é linkar essa porta interna do container a uma porta do nosso computador. Para fazer isso, precisamos adicionar mais uma flag, a -P, que fará com que o Docker atribua uma porta aleatória do mundo externo, que no caso é a nossa máquina, para poder se comunicar com o que está dentro do container:
 
@@ -29,20 +31,19 @@ Em nenhum momento dizemos onde está o site estático. Qual porta que utilizamos
 	
 Agora, ao executar novamente o comando docker ps, na coluna PORTS, vemos algo como:
 
-	PORTS
-0.0.0.0:9001->80/tcp, 0.0.0.0:9000->443/tcp
+	PORTS 0.0.0.0:9001->80/tcp, 0.0.0.0:9000->443/tcp
 
 No caso do mapeamento acima, vemos que a porta 9001 da nossa máquina faz referência à porta 80 do container, e a porta 9000 da nossa máquina faz referência à porta 443 do container. Uma outra maneira de ver as portas é utilizar o comando docker port, passando para ele o id do container:
 
 	alura@alura-estudio-03:~$ sudo docker port 989e4d7d3638
-443/tcp -> 0.0.0.0:9000
-80/tcp -> 0.0.0.0:9001
+	443/tcp -> 0.0.0.0:9000
+	80/tcp -> 0.0.0.0:9001
 
 Então, se quisermos acessar a porta 80, que é onde está o site estático, na nossa máquina, como o endereço 0.0.0.0 representa a nossa máquina local, podemos acessar o endereço http://localhost:9001/ no navegador.
 	
 > Caso você esteja utilizando o Docker Toolbox, como ele está rodando em cima de uma máquina virtual, o endereço http://localhost:9001/ não funcionará, pois você deve acessar a porta através do IP da máquina virtual. Para descobrir o IP dessa máquina virtual, basta executar o comando docker-machine ip. Com o IP em mãos, basta acessá-lo no navegador, utilizando a porta que o Docker atribuiu, por exemplo http://192.168.0.38:9001/.
 
-##Nomeando um container
+## Nomeando um container
 
 Uma outra coisa interessante que é possível fazer quando estamos criando um container é que podemos dar um nome para o container, assim não ficamos dependendo os ids aleatórios que o Docker atribui, tornando mais fácil na hora de parar e remover o container, por exemplo. Para dar um nome para o container, utilizamos a flag --name:
 
@@ -56,7 +57,7 @@ Assim o nome do nosso container será meu-site. Agora, para pará-lo, basta pass
 	
 A mesma coisa seria para rodar o container novamente, ou para removê-lo, bastando apenas nós utilizarmos o seu nome.
 
-##Definindo uma porta específica
+## Definindo uma porta específica
 
 Uma outra coisa interessante para vermos é que, quando estamos criando um container e queremos linkar uma porta interna sua a uma porta do nosso computador, utilizamos a flag -P, para o Docker atribuir uma porta aleatória da nossa máquina, assim podemos nos comunicar com o que está dentro do container. Mas podemos definir essa porta, utilizando a flag -p, nesse modelo: -p PORTA-MUNDO-EXTERNO:PORTA-CONTAINER, por exemplo:
 
@@ -64,7 +65,7 @@ Uma outra coisa interessante para vermos é que, quando estamos criando um conta
 	
 Nesse exemplo, através da porta 12345 do nosso computador podemos acessar a porta 80 do container.
 
-##Atribuindo uma variável de ambiente
+## Atribuindo uma variável de ambiente
 
 Além disso, podemos atribuir uma variável de ambiente no container. Por exemplo, a página do site estático pega o valor da variável de ambiente AUTHOR e o exibe junto à mensagem de Hello, então podemos modificar o valor dessa variável, através da flag -e:
 
