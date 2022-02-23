@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-#Criando um Dockerfile
+# Criando um Dockerfile
 -------------------------------------------------------------------
 
 Já criamos a imagem, mas por enquanto ela só está na nossa máquina local. Para disponibilizar a imagem para outras pessoas, precisamos enviá-la para o [Docker Hub](https://hub.docker.com/).
