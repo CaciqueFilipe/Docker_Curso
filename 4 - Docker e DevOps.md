@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-#Docker e DevOps
+# Docker e DevOps
 -------------------------------------------------------------------
 
 DevOps é um tópico bem amplo que envolve tanto aspectos culturais como técnicos, mas possui como principal objetivo aumentar a qualidade e eficiência da entrega de software. DevOps é uma metodologia que visa integrar os times de desenvolvimento com infraestrutura e o Docker está tendo um papel importante nessa tarefa.
