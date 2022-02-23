@@ -1,12 +1,12 @@
 -------------------------------------------------------------------
-#Pegando dados de um banco em outro container
+# Pegando dados de um banco em outro container
 -------------------------------------------------------------------
 
 Para praticar o que vimos sobre redes no Docker, vamos criar uma pequena aplicação que se conectará ao banco de dados, utilizando tudo o que vimos no vídeo anterior.
 
 O que vamos fazer é utilizar a aplicação alura-books, que irá pegar os dados de um banco de dados de livros e exibi-los em uma página web. É uma aplicação feita em Node.js e o banco de dados é o MongoDB.
 
-##Pegando dados de um banco em um outro container
+### Pegando dados de um banco em um outro container
 
 Então, primeiramente vamos baixar essas duas imagens, a imagem douglasq/alura-books na versão cap05 e a imagem mongo:
 
