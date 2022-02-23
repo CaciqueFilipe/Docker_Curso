@@ -1,12 +1,12 @@
 -------------------------------------------------------------------
-#Comunicação entre containers
+# Comunicação entre containers
 -------------------------------------------------------------------
 
 __Veremos como funciona a rede, e como fazemos para interligar diversos containers no Docker. Normalmente uma aplicação é composta por diversas partes, sejam elas o load balancer/proxy, a aplicação em si, um banco de dados, etc. Quando estamos trabalhando com containers, é bem comum separarmos cada uma dessas partes em um container específico, para cada container ficar com somente uma única responsabilidade.__
 
 __Mas se temos uma parte da nossa aplicação em cada container, como podemos fazer para essas partes falarem entre elas? Pois para a nossa aplicação funcionar como um todo, os containers precisam trocar dados entre eles.__
 
-##Redes com Docker
+## Redes com Docker
 
 A boa notícia é que no Docker, por padrão, já existe uma default network. Isso significa que, quando criamos os nossos containers, por padrão eles funcionam na mesma rede:
 
@@ -52,7 +52,7 @@ rtt min/avg/max/mdev = 0.133/0.153/0.180/0.024 ms
 
 Assim, podemos ver que os containers estão conseguindo se comunicar entre eles.
 
-##Comunicação entre containers utilizando os seus nomes
+## Comunicação entre containers utilizando os seus nomes
 
 Então, o Docker criar uma rede virtual, em que todos os containers fazem parte dela, com os IPs automaticamente atribuídos. Mas quando os IPs são atribuídos, cada hora em que subirmos um container, ele irá receber um IP novo, que será determinado pelo Docker. Logo, se não sabemos qual o IP que será atribuído, isso não é muito útil quando queremos fazer a comunicação entre os containers. Por exemplo, podemos querer colocar dentro do aplicativo o endereço exato do banco de dados, e para saber exatamente o endereço do banco de dados, devemos configurar um nome para aquele container.
 
@@ -64,7 +64,7 @@ Na rede padrão do Docker, só podemos realizar a comunicação utilizando IPs, 
 
 Isso não pode ser feito na rede padrão do Docker, somente quando criamos a nossa própria rede.
 
-##Criando a nossa própria rede do Docker
+## Criando a nossa própria rede do Docker
 
 Então, vamos criar a nossa própria rede, através do comando docker network create, mas não é só isso, para esse comando também precisamos dizer qual driver vamos utilizar. Para o padrão que vimos, de ter uma nuvem e os containers compartilhando a rede, devemos utilizar o driver de bridge.
 
