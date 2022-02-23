@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-#Pegando dados de um banco em outro container
+# Pegando dados de um banco em outro container
 -------------------------------------------------------------------
 __Estudaremos uma tecnologia chamada Docker Compose, que nos auxiliará a lidar com múltiplos containers simultaneamente.__
 
@@ -12,13 +12,13 @@ docker run --network minha-rede -d -p 8080:3000 douglasq/alura-books:cap05
 
 Isso tudo depois de termos construído pelo menos a imagem **douglasq/alura-books**
 
-##O problema
+## O problema
 
 Esses dois comandos criam dois containers, mas subindo eles desse jeito manual, é muito comum esquecermos de passar alguma flag, ou subir o container na ordem errada, sem a devida rede, ou seja, é um trabalho muito manual e facilmente suscetível a erros, isso com somente dois containers.
 
 Esse modo de subir os containers na mão é bom se quisermos criar um ambiente rapidamente, ou são poucos containers, mas quando a aplicação começa a crescer, temos que digitar muitos comandos.
 
-##Funcionamento das aplicações em geral
+## Funcionamento das aplicações em geral
 
 Na vida real, sabemos que a aplicação é maior que somente dois containers, geralmente temos dois, três ou mais containers para segurar o tráfego da aplicação, distribuindo a carga. Além disso, temos que colocar todos esses containers para se comunicar com o banco de dados em um outro container, mas quanto maior a aplicação, devemos ter mais de um container para o banco também.
 
@@ -28,7 +28,7 @@ E claro, se temos três aplicações rodando, não podemos ter três endereços 
 
 Se formos seguir esse diagrama, teríamos que criar cinco containers na mão, e claro, cada container com configurações e flags diferentes, além de termos que nos preocupar com a ordem em que vamos subi-los.
 
-##Docker Compose
+## Docker Compose
 
 Ao invés de subir todos esses containers na mão, o que vamos fazer é utilizar uma tecnologia aliada do Docker, chamada Docker Compose, feito para nos auxiliar a orquestrar melhor múltiplos containers. Ele funciona seguindo um arquivo de texto YAML (extensão .yml), e nele nós descrevemos tudo o que queremos que aconteça para subir a nossa aplicação, todo o nosso processo de build, isto é, subir o banco, os containers das aplicações, etc.
 
@@ -296,7 +296,7 @@ networks:
 
 Com isso, a construção dos nossos serviços está finalizada.
 
-##Ordem dos serviços
+## Ordem dos serviços
 
 Por último, quando subimos os containers na mão, temos uma ordem, primeiro devemos subir o mongodb, depois a nossa aplicação, ou seja, node1, node2 e node3 e após tudo isso subimos o nginx. Mas como que fazemos isso no docker-compose.yml?
 
