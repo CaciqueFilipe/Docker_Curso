@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-#Comandos básicos
+# Comandos básicos
 -------------------------------------------------------------------
 
 - docker ps - exibe todos os containers em execução no momento.
