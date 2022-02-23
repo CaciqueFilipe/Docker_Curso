@@ -1,12 +1,12 @@
 -------------------------------------------------------------------
-#Criando um Dockerfile
+# Criando um Dockerfile
 -------------------------------------------------------------------
 
 Já trabalhamos com a imagem do ubuntu, hello-world, dockersamples/static-site e por fim do node, mas até agora não criamos a nossa própria imagem, para podermos distribuir para as outras pessoas. Então é isso que faremos nesta aula.
 
 No começo do treinamento, foi comentado que a imagem é como se fosse uma receita de bolo. Então, para criarmos a nossa própria imagem, temos que criar a nossa receita de bolo, o Dockerfile, ensinando o Docker a criar uma imagem a partir da nossa aplicação, para que ela seja utilizada em outros locais.
 
-##Montando o Dockerfile
+## Montando o Dockerfile
 
 Então, no nosso projeto, devemos criar o arquivo Dockerfile, que nada mais é do que um arquivo de texto. Ele pode ter qualquer nome, porém nesse caso ele também deve possuir a extensão .dockerfile, por exemplo node.dockerfile, mas vamos manter o nome padrão mesmo.
 
@@ -87,7 +87,7 @@ Com isso, finalizamos o Dockerfile, baseado no comando que fizemos na aula anter
 	
 Resta agora criar a imagem.
 
-##Criando a imagem
+## Criando a imagem
 
 Para criar a imagem, precisamos fazer o seu build através do comando docker build, comando utilizado para buildar uma imagem a partir de um Dockerfile. Para configurar esse comando, passamos o nome do Dockerfile através da flag -f:
 
@@ -113,7 +113,7 @@ Ao executar o comando, podemos perceber que cada instrução executada do nosso 
 
 Assim, se um dia a imagem precisar ser alterada, somente o container referente à instrução modificada será alterado, com as outras partes intermediárias da imagem já prontas.
 
-##Criando um container a partir da nossa imagem
+## Criando um container a partir da nossa imagem
 
 Agora que já temos a imagem criada, podemos criar um container a partir dela: 
 
