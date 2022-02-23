@@ -2,7 +2,7 @@
 #História do Surgimento do Docker
 -------------------------------------------------------------------
 
-##A evolução do host de aplicações
+### A evolução do host de aplicações
 Antigamente, quando queríamos montar o nosso sistema, com vários serviços (bancos de dados, proxy, etc) e aplicações, acabávamos tendo vários servidores físicos, cada um com um serviço ou aplicação do nosso sistema, por exemplo:
 
 <img src="https://s3.amazonaws.com/caelum-online-public/646-docker/01/imagens/servicos-servidores.png"/>
@@ -15,10 +15,10 @@ E se quisermos que uma aplicação se comunique com outra ou faça qualquer comu
 
 Além disso, o processo era lento, já que a cada nova aplicação, deveríamos comprar/montar o servidor físico, instalar o sistema operacional, configurá-lo e subir a aplicação.
 
-##Capacidade pouco aproveitada
+### Capacidade pouco aproveitada
 O que foi falado anteriormente não era o único problema desse tipo de arquitetura. Era muito comum termos servidores parrudos, com uma única aplicação sendo executada, para normalmente ficarem funcionando abaixo da sua capacidade, para quando for necessário, o servidor aguentar uma grande quantidade de acessos. Isso resultava em muita capacidade ociosa nos servidores, com muitos recursos desperdiçados.
 
-##Virtualização, uma solução?
+### Virtualização, uma solução?
 Para fugir desses problemas de servidores ociosos e alto tempo e custo de subir e manter aplicações em servidores físicos, surgiu como solução a virtualização, surgindo assim as máquinas virtuais.
 
 As máquinas virtuais foram possíveis de ser criadas graças a uma tecnologia chamada Hypervisor, que funciona em cima do sistema operacional, permitindo a virtualização dos recursos físicos do nosso sistema. Assim, criamos uma máquina virtual que tem acesso a uma parte do nosso HD, memória RAM e CPU, criando um computador dentro de outro:
@@ -31,7 +31,7 @@ E se temos uma máquina virtual que está acessando uma parte do nosso hardware 
 
 Assim, reduzimos a quantidade de servidores e consequentemente os custos com luz e rede. Além disso, dividimos melhor o nosso hardware, aproveitando melhor os seus recursos e diminuindo a ociosidade.
 
-##Problemas das máquinas virtuais
+### Problemas das máquinas virtuais
 Apesar de resolver os problemas do uso de vários servidores físicos, as máquinas virtuais também possuem problemas. Para podermos hospedar a nossa aplicação em uma máquina virtual, também precisamos instalar um sistema operacional nela:
 
 <img src="https://s3.amazonaws.com/caelum-online-public/646-docker/01/imagens/sistema-operacional-vms.png"/>
@@ -42,7 +42,7 @@ Além disso, há um custo de configuração, isto é, liberar portas, instalar a
 
 Muitas vezes, o tempo voltado para a manutenção das máquinas virtuais era o mesmo tempo voltado para a nossa aplicação em si. Ou seja, acabávamos dividindo o valor da nossa empresa, ao invés de focar somente nas aplicações, dividíamos o trabalho com a manutenção dos sistemas operacionais.
 -------------------------------------------------------------------
-#Surgimento dos Containers
+# Surgimento dos Containers
 -------------------------------------------------------------------
 Um container funcionará junto do nosso sistema operacional base, e conterá a nossa aplicação, ou seja, a aplicação será executada dentro dele. Criamos um container para cada aplicação, e esses containers vão dividir as funcionalidades do sistema operacional:
 
@@ -52,12 +52,12 @@ Não temos mais um sistema operacional para cada aplicação, já que agora as a
 
 Assim, com somente um sistema operacional, reduzimos os custos de manutenção e de infraestrutura como um todo.
 
-##Vantagens de um container
+### Vantagens de um container
 Por não possuir um sistema operacional, o container é muito mais leve e não possui o custo de manter múltiplos sistemas operacionais, já que só teremos um sistema operacional, que será dividido entre os containers.
 
 Além disso, por ser mais leve, o container é muito rápido de subir, subindo em questão de segundos. Logo, o container é uma solução para suprir o problema de múltiplas máquinas virtuais em um hardware físico, já que com o container, nós dividimos o sistema operacional entre as nossas aplicações.
 
-##Necessidade do uso de containers
+### Necessidade do uso de containers
 Mas por que precisamos dos containers, não podemos simplesmente instalar as aplicações no nosso próprio sistema operacional? Até por que já fazemos isso, já que no nosso sistema operacional temos um editor de texto, terminal, navegador, etc.
 
 No caso das nossas aplicações, essa abordagem pode ter alguns problemas. Por exemplo, se dois aplicativos precisarem utilizar a mesma porta de rede? Precisaremos de algo para isolar uma aplicação da outra. E se uma aplicação consumir toda a CPU, a ponto de prejudicar o funcionamento das outras aplicações? Isso acontece se não limitarmos a aplicação. Outro problema que pode ocorrer é cada aplicação precisar de uma versão específica de uma linguagem, por exemplo, uma aplicação precisa do Java 7 e outra do Java 8. Além disso, uma aplicação pode acabar congelando todo o sistema. Por isso é bom ter essa separação das aplicações, isolar uma da outra, e isso pode ser feito com os containers.
@@ -65,10 +65,10 @@ No caso das nossas aplicações, essa abordagem pode ter alguns problemas. Por e
 Com os containers, conseguimos limitar o consumo de CPU das aplicações, melhorando o controle sobre o uso de cada recurso do nosso sistema (CPU, rede, etc). Também temos uma facilidade maior em trabalhar com versões específicas de linguagens/bibliotecas, além de ter uma agilidade maior na hora de criar e subir containers, já que eles são mais leves que as máquinas virtuais.
 
 -------------------------------------------------------------------
-#Empresa Responsável
+# Empresa Responsável
 -------------------------------------------------------------------
 
-##Docker, Inc.
+### Docker, Inc.
 Primeiramente, devemos falar sobre a Docker, Inc., que no início era chamada de dotCloud. A dotCloud era uma empresa de PaaS (Platform as a Service), sendo responsável pela hospedagem da nossa aplicação, levantando o servidor, configurando-o, liberando portas, etc, fazendo tudo o que é necessário para subir a nossa aplicação. Outros exemplos de empresas de PaaS são o Heroku, Microsoft Azure e Google Cloud Platform.
 
 Inicialmente, para prover a parte de infraestrutura, a dotCloud utilizava o Amazon Web Services (AWS), serviço que nos disponibiliza máquinas virtuais e físicas para trabalharmos. E para hospedar uma aplicação, sabemos que precisamos do sistema operacional, mas a dotCloud introduziu o conceito de containers na hora de subir uma aplicação, dando origem ao Docker, tecnologia utilizada para baratear o custo de hospedar várias aplicações em uma mesma máquina.
